@@ -76,9 +76,9 @@ BLUE := \033[1;34m
 RED := \033[0;31m
 NC := \033[0m
 
-all: add commit push
+all: add commit push status
 
-sync: stash pull
+sync: stash pull status
 
 add:
 	@printf "$(BLUE)[ADD]$(BLUE) Adding files...\n"
@@ -89,15 +89,15 @@ status:
 	@git status || { printf "$(RED)[ERROR] status failed!$(NC)\n"; exit 1; }
 
 commit:
-	@read -p "$(BLUE) Enter commit message: " msg; \
-	printf "$(BLUE)[COMMIT]$(NC) Committing...\n"; \
+	@read -p "$(BLUE)[COMMIT]$(BLUE) Enter commit message: " msg; \
+	printf " $(BLUE)[COMMIT]$(BLUE) Committing...\n"; \
 	git commit -m "$$msg" || { printf "$(RED)[ERROR] commit failed!$(NC)\n"; exit 1; }; \
-	printf "$(GREEN) Committed successfully \n"
+	printf "$(GREEN)[COMMIT]$(BLUE) Committed successfully \n"
 
 push:
 	@printf "$(BLUE)[PUSH]$(NC) Pushing to remote...\n"
 	@git push origin main || { printf "$(RED)[ERROR] push failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN) Pushed to remote \n"
+	@printf "$(GREEN)[PUSH]$(GREEN) Pushed to remote \n"
 
 stash:
 	@printf "$(BLUE)[STASH]$(NC) Stashing changes...\n"

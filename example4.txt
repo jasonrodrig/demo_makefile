@@ -5,4 +5,6 @@ Here are the characteristics of round robin scheduling:
 Each task is assigned a fixed time quantum to execute. The time quantum decides how long a process executes before being sent to the back of the queue.
 If the time quantum is small, it ensures better responsiveness but increases the overhead (cost, time, or resources) due to constant switching.
 If the time quantum is large, it might decrease responsiveness.
-
+rness
+Each task gets the same time to execute before being moved to the back of the line.
+It ensures that no task dominates.
