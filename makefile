@@ -139,7 +139,8 @@ status:
 	@git status || { printf "$(RED)[ERROR] status failed!$(NC)\n"; exit 1; }
 
 commit:
-	@read -p "$(BLUE)[COMMIT]$(NC) Enter commit message: " msg; \
+	@printf "$(BLUE)[COMMIT]$(NC) Enter commit message: "
+	@read msg; \
 	printf "$(BLUE)[COMMIT]$(NC) Committing...\n"; \
 	git commit -m "$$msg" || { printf "$(RED)[ERROR] commit failed!$(NC)\n"; exit 1; }; \
 	printf "$(GREEN)[COMMIT]$(NC) Commit successful!\n"
@@ -158,4 +159,4 @@ pull:
 	@printf "$(BLUE)[PULL]$(NC) Pulling latest changes...\n"
 	@git pull origin main --rebase || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
 	@printf "$(GREEN)[PULL]$(NC) Pull successful!\n"
-
+	
