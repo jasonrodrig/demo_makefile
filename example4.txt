@@ -8,3 +8,5 @@ If the time quantum is large, it might decrease responsiveness.
 rness
 Each task gets the same time to execute before being moved to the back of the line.
 It ensures that no task dominates.
+
+swd:wq
