@@ -81,34 +81,32 @@ all: add commit push
 sync: stash pull
 
 add:
-	@printf "$(BLUE)[ADD]$(NC) Adding files...\n"
+	@printf "$(BLUE)[ADD]$(BLUE) Adding files...\n"
 	@git add . || { printf "$(RED)[ERROR] add failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN)[DONE]$(NC)\n"
 
 status:
 	@printf "$(YELLOW)[STATUS]$(NC)\n"
 	@git status || { printf "$(RED)[ERROR] status failed!$(NC)\n"; exit 1; }
 
 commit:
-	@read -p "Enter commit message: " msg; \
+	@read -p "$(BLUE) Enter commit message: " msg; \
 	printf "$(BLUE)[COMMIT]$(NC) Committing...\n"; \
 	git commit -m "$$msg" || { printf "$(RED)[ERROR] commit failed!$(NC)\n"; exit 1; }; \
-	printf "$(GREEN)[DONE]$(NC)\n"
+	printf "$(GREEN) Committed successfully \n"
 
 push:
 	@printf "$(BLUE)[PUSH]$(NC) Pushing to remote...\n"
-	@git push || { printf "$(RED)[ERROR] push failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN)[DONE]$(NC)\n"
-
+	@git push origin main || { printf "$(RED)[ERROR] push failed!$(NC)\n"; exit 1; }
+	@printf "$(GREEN) Pushed to remote \n"
 
 stash:
 	@printf "$(BLUE)[STASH]$(NC) Stashing changes...\n"
-	@git stash push -m "Auto stash from Makefile" || { printf "$(RED)[ERROR] stash failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN)[DONE]$(NC)\n"
+	@git stash -u || { printf "$(RED)[ERROR] stash failed!$(NC)\n"; exit 1; }
+	@printf "$(GREEN) stashed the previous commits \n"
 
 pull:
 	@printf "$(BLUE)[PULL]$(NC) Pulling latest changes...\n"
-	@git pull --rebase || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN)[DONE]$(NC)\n"
+	@git pull origin main || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
+	@printf "$(GREEN) pulled the latest changes \n"
 
 
