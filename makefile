@@ -110,22 +110,32 @@
 #	@printf "$(GREEN) pulled the latest changes \n"
 
 ########################################################################################
-
-EEN := \033[0;32m
+# ======================
+#		COLOR DEFINITIONS
+# ======================
+GREEN  := \033[0;32m
 YELLOW := \033[1;33m
-BLUE := \033[1;34m
-RED := \033[0;31m
-NC := \033[0m
+BLUE   := \033[1;34m
+RED    := \033[0;31m
+NC     := \033[0m
 
+# ======================
+#       SHORTCUTS
+# ======================
 all: add commit push status
 sync: stash pull status
+
+# ======================
+#        COMMANDS
+# ======================
 
 add:
 	@printf "$(BLUE)[ADD]$(NC) Adding files...\n"
 	@git add . || { printf "$(RED)[ERROR] add failed!$(NC)\n"; exit 1; }
+	@printf "$(GREEN)[ADD]$(NC) Files added successfully.\n"
 
 status:
-	@printf "$(YELLOW)[STATUS]$(NC) status check.. \n"
+	@printf "$(YELLOW)[STATUS]$(NC)\n"
 	@git status || { printf "$(RED)[ERROR] status failed!$(NC)\n"; exit 1; }
 
 commit:
@@ -142,10 +152,10 @@ push:
 stash:
 	@printf "$(BLUE)[STASH]$(NC) Stashing changes...\n"
 	@git stash -u || { printf "$(RED)[ERROR] stash failed!$(NC)\n"; exit 1; }
-	@printf "$(GREEN)[STASH]$(NC) Stash complete.\n"
+	@printf "$(GREEN)[STASH]$(NC) Changes stashed.\n"
 
 pull:
 	@printf "$(BLUE)[PULL]$(NC) Pulling latest changes...\n"
-	@git pull origin main || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
+	@git pull origin main --rebase || { printf "$(RED)[ERROR] pull failed!$(NC)\n"; exit 1; }
 	@printf "$(GREEN)[PULL]$(NC) Pull successful!\n"
 
