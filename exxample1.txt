@@ -1,0 +1,7 @@
+Key Highlights of this Blog
+
+Round Robin is a preemptive CPU scheduling algorithm where every process gets an equal and fixed CPU time slice (time quantum).
+
+It prevents any single process from hogging the CPU, making it ideal for multitasking and time-sharing systems.
+
+This blog walks you through: how Round Robin works, C programs with zero arrival time and different arrival times, real-life applications, and FAQs.
