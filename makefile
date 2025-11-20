@@ -31,6 +31,12 @@ YELLOW := \033[1;33m
 BLUE := \033[1;34m
 NC := \033[0m   # reset color
 
+all: add commit push status
+
+sync: 
+	stash 
+	pull
+
 add:
 	@echo "$(BLUE)[ADD]$(NC) Adding files..."
 	@git add .
@@ -51,12 +57,6 @@ push:
 	@git push origin main
 	@echo "$(GREEN)[DONE]$(NC)"
 
-all: 
-	add 
-	commit
-	push
-	status
-
 stash:
 	@echo "$(BLUE)[STASH]$(NC) Stashing changes..."
 	@git stash -u "Auto stash from Makefile"
@@ -67,7 +67,4 @@ pull:
 	@git pull origin main
 	@echo "$(GREEN)[DONE]$(NC)"
 
-sync: 
-	stash 
-	pull
 

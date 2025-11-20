@@ -1,0 +1,19 @@
+Introduction
+
+Imagine you're waiting for your turn on a carnival ride. Everyone in line gets a fixed amount of time on the ride. When your turn ends, you go back to the end of the line if you want to try again.
+
+That’s exactly how Round Robin Scheduling works in operating systems.
+
+If you are a CS student, preparing for OS / DSA interviews, or learning CPU scheduling, the Round Robin program in C is one of the most frequently asked concepts, both theoretically and in coding assignments. Understanding it helps you:
+
+Crack OS viva/coding questions
+Implement scheduling logic in C
+Understand how real operating systems share CPU time fairly
+In the next few minutes, you’ll learn:
+
+What Round Robin Scheduling is
+How it compares to FCFS
+Working and step-by-step execution with diagrams
+Example C programs (Zero Arrival Time, Sequential Arrival Time, Different Arrival Time)
+Applications, advantages, and key points.
+By the end, you will be able to write and explain the Round Robin program in C confidently, perfect for exams, projects, and interviews.
